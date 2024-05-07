@@ -6,20 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ankit Portfolio-Page</title>
-
-    <!-- swiper css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-
-    <!-- box icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-    <!-- custom css -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="images/11.png" type="image/x-icon">
 </head>
 
 <body>
-
-    <!-- header design -->
     <header class="header">
         <a href="#" class="logo"><img src="images/100.png" alt="" style="width:100px; height: 80px; border-radius: 100%;"></a>
 
@@ -27,8 +20,9 @@
             <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
             <a href="#services">Knowledge</a>
-            <a href="#portfolio">Latest Web-Project</a>
-            <a href="#ios">Latest ios-Project</a>
+            <a href="#portfolio">Web-Project</a>
+            <a href="#ios">IOS-Project</a>
+            <a href="#flutter">Flutter-Project</a>
             <a href="#contact">Contact</a>
         </nav>
 
@@ -36,8 +30,6 @@
 
         <div class="bx bx-menu" id="menu-icon"></div>
     </header>
-
-    <!-- home section design -->
     <section class="home" id="home">
         <div class="home-content">
             <h3>Hello, I am</h3>
@@ -55,7 +47,7 @@
                 <a href="https://www.linkedin.com/in/ankit-kumar-01a52827b/"><i class='bx bxl-linkedin'></i></a>
             </div>
 
-            <a href="images/ankit_resume.pdf" class="btn">Download My Resume</a>
+            <a href="images/ankitRESUME.pdf" class="btn">Download My Resume</a>
         </div>
 
         <div class="profession-container">
@@ -70,7 +62,7 @@
                 </div>
                 <div class="profession" style="--i:2;">
                     <i class='bx bx-laptop'></i>
-                    <h3>Machine Learning</h3>
+                    <h3>Flutter Developer</h3>
                 </div>
                 <div class="profession" style="--i:3;">
                     <i class='bx bx-camera'></i>
@@ -87,8 +79,6 @@
             <img src="images/12.png" alt="">
         </div>
     </section>
-
-    <!-- about section design -->
     <section class="about" id="about">
         <div class="about-img">
             <img src="images/11.png" alt="">
@@ -113,18 +103,10 @@
             <a href="#" class="btn">Read More</a>
         </div>
     </section>
-
-    <!-- services section design -->
     <section class="services" id="services">
         <h2 class="heading">My <span>Knowledge</span></h2>
 
         <div class="services-container">
-            <div class="services-box">
-                <i class='bx bx-code-alt'></i>
-                <h3>Web Development</h3>
-                <p>Web development refers to the process of building and maintaining websites or web applications that are accessible via the internet. It encompasses a variety of tasks, including web design, web content development, client-side scripting, server-side scripting, and network security configuration, among others.</p>
-                <a href="https://en.wikipedia.org/wiki/Web_development#:~:text=Web%20development%20is%20the%20work,businesses%2C%20and%20social%20network%20services." class="btn">Read More</a>
-            </div>
             <div class="services-box">
                 <i class='bx bx-mobile'></i>
                 <h3>ios Development</h3>
@@ -133,17 +115,20 @@
                 <a href="https://www.ibm.com/topics/ios-app-development" class="btn">Read More</a>
             </div>
             <div class="services-box">
-                <i class='bx bx-laptop'></i>
-                <h3>Machine Learning</h3>
-                <p>Machine learning is a subset of artificial intelligence (AI) that focuses on developing algorithms and statistical models that allow computers to perform tasks without being explicitly programmed. It involves creating systems that can learn from data, identify patterns, and make decisions or predictions based on that data.
-
-                </p>
+                <i class='bx bx-code-alt'></i>
+                <h3>Web Development</h3>
+                <p>Web development refers to the process of building and maintaining websites or web applications that are accessible via the internet. It encompasses a variety of tasks, including web design, web content development, client-side scripting, server-side scripting, and network security configuration, among others.</p>
+                <a href="https://en.wikipedia.org/wiki/Web_development#:~:text=Web%20development%20is%20the%20work,businesses%2C%20and%20social%20network%20services." class="btn">Read More</a>
+            </div>
+         
+            <div class="services-box">
+                <i class='bx bx-mobile'></i>
+                <h3>Flutter Development</h3>
+                <p>Flutter is a versatile open-source UI software development kit created by Google, used to craft natively compiled applications for mobile, web, and desktop from a single codebase. Its importance lies in its ability to streamline and accelerate the app development process while ensuring a consistent and visually appealing user experience across multiple platforms.</p>
                 <a href="https://en.wikipedia.org/wiki/Machine_learning" class="btn">Read More</a>
             </div>
         </div>
     </section>
-
-    <!-- portfolio section design -->
     <section class="portfolio" id="portfolio">
         <h2 class="heading">Latest <span>Project</span></h2>
 
@@ -212,12 +197,12 @@
                 </div>
             </div>
             <div class="portfolio-box">
-                <img src="images/8.png" alt="">
+                <img src="images/calc.png" alt="">
 
                 <div class="portfolio-layer">
                     <h4>Web Project</h4>
                     <p>A front-end Resume Website for presenting your Resume</p>
-                    <a href="https://ankit071105.github.io/ankitresume/"><i class='bx bx-link-external'></i></a>
+                    <a href="https://ankit071105.github.io/Calculator/"><i class='bx bx-link-external'></i></a>
                 </div>
             </div>
             <div class="portfolio-box">
@@ -231,8 +216,6 @@
             </div>
         </div>
     </section>
-
-    <!-- testimonial design -->
     <div class="testimonial-container" id="ios">
         <h2 class="heading">ios <span>Project</span></h2>
 
@@ -286,6 +269,51 @@
             </div>
         </div>
     </div>
+    <div class="testimonial-container" id="flutter">
+        <h2 class="heading">Flutter <span class="mok">Project</span></h2>
+
+        <div class="testimonial-wrapper">
+            <div class="testimonial-box mySwiper">
+                <div class="testimonial-content swiper-wrapper">
+                    <div class="testimonial-slide swiper-slide">
+                        <img src="images/silent.jpeg" alt="">
+                        <h3>Silent Speak</h3>
+                        <p>I've developed an app called <B>Silent-Speak</B> that translates all 28 languages into Morse code. To make learning more engaging, I've included educational games for kids. These games feature learning Morse code for numbers through Tic-Tac-Toe, playing Rock-Paper-Scissors, and flipping cards to learn the alphabet in Morse code.</p>
+                        <br>
+                        <button>
+                    <a href="#"> Source code</a>
+                        </button>
+                    </div>
+                    <div class="testimonial-slide swiper-slide">
+                        <img src="images/vimal.png" alt="">
+                        <h3>Vimal Store</h3>
+     <p>The <B>Vimal Store</B> Flutter project is a grocery app designed to provide users with a convenient platform to purchase various household products at affordable prices. The app offers a wide range of items for users to browse and buy. It includes features such as product categorization, a user-friendly interface, secure payment options, and seamless navigation. With Vimal Store, users can easily shop for groceries and other essentials from the comfort of their homes, ensuring a hassle-free shopping experience</p>
+                            <br>
+                            <br>
+                            <button>
+                        <a href="https://github.com/ankit071105/VIMAL"> Source code</a>
+                            </button>
+                    </div>
+                    <div class="testimonial-slide swiper-slide">
+                        <img src="images/emi.jpeg" alt="">
+                        <h3>EasyEMI Master</h3>
+                     <p>
+                        The Flutter project is an intuitive loan <B>EasyEMI Master</B> application designed to facilitate financial planning for users. With this app, individuals can effortlessly determine their equated monthly installments (EMI) for various types of loans. Users simply input key parameters such as the loan amount, interest rate, and loan tenure. The application then swiftly computes the monthly EMI, providing users with valuable insights into their repayment obligations. This tool empowers users to make informed financial decisions by offering clarity on the potential financial commitments associated with borrowing, thus promoting responsible financial management
+                     </p>
+                            <br>
+                            <br>
+                            <button>
+                        <a href="#"> Source code</a>
+                            </button>
+                    </div>
+                </div>
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
 <div class="" style="display: flex; justify-content: center;">
     <h1 style="margin-top:5px;">For More Projects : </h1>
     <br>
@@ -294,7 +322,6 @@
 </div>
 <br>
 <br>
-    <!-- footer design -->
     <footer class="footer" id="contact">
         <div class="footer-text">
             <p>Copyright &copy; 2024 | All Rights Reserved  </p>
@@ -313,15 +340,8 @@
             <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
         </div>
     </footer>
-
-
-    <!-- scroll reveal -->
     <script src="https://unpkg.com/scrollreveal"></script>
-
-    <!-- swiper js -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-    <!-- custom js -->
     <script src="js/script.js"></script>
 </body>
 

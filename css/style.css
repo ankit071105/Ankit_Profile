@@ -12,11 +12,11 @@
 }
 
 :root {
-    --bg-color: #fdfdfd;
-    --text-color: #333;
-    --main-color: #24cdbf;
-    --white-color: #fdfdfd;
-    --shadow-color: rgba(48, 9, 57, 0.975);
+    --bg-color: #defffc;
+    --text-color: #3f0fad;
+    --main-color: #1666b5;
+    --white-color: #b8fbf8;
+    --shadow-color: rgba(42, 174, 204, 0.975);
 }
 
 *::selection {
@@ -894,4 +894,7 @@ span {
 }
 img {
     border-radius: 20px;
+}
+.mok{
+    color: darkblue;
 }
