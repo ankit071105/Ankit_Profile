@@ -12,11 +12,11 @@
 }
 
 :root {
-    --bg-color: #defffc;
-    --text-color: #3f0fad;
-    --main-color: #1666b5;
-    --white-color: #b8fbf8;
-    --shadow-color: rgba(42, 174, 204, 0.975);
+    --bg-color: #0e021b;
+    --text-color: #82f4f0;
+    --main-color: #7e097b;
+    --white-color: #7cd1f9;
+    --shadow-color: rgba(247, 245, 251, 0.975);
 }
 
 *::selection {
@@ -120,7 +120,10 @@ section {
 }
 
 .home {
+    position: relative;
+    height: 100vh;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -205,7 +208,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: professionRotate 13s ease-out infinite;
+    animation: professionRotate 16s linear infinite;
 }
 
 @keyframes professionRotate {
@@ -244,7 +247,7 @@ section {
     color: var(--main-color);
     transform: rotate(calc(360deg / 4 * var(--i)));
     transform-origin: 384px;
-    background: var(--bg-color);
+   
     padding: 13px 0;
 }
 
@@ -897,4 +900,83 @@ img {
 }
 .mok{
     color: darkblue;
+}
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.earth-container {
+    width: 100%;
+    max-width: 400px; 
+    height: auto;
+    position: relative;
+    perspective: 1000px;
+    margin-bottom: 620px; 
+
+}
+
+.earth {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: transform 0.5s ease;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .earth-container {
+        display: none; /* Hide Earth container on smaller screens */
+    }
+}
+
+.earth:hover {
+    animation: rotation 10s infinite linear; /* Rotation animation on hover */
+}
+
+@keyframes rotation {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(180deg);
+    }
+}
+.canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place the canvas behind other content */
+}
+#universe {
+    width: 100%;
+    height: 100%;
+}
+.home {
+    position: relative;
+    z-index: 1; /* Ensure the content is above the canvas */
+}
+.earth-container {
+    position: absolute;
+    top: 50%; 
+    left: 70%; 
+    transform: translate(-50%, -50%);
+}
+#earth {
+    position: relative; /* Ensure it's relative to its container */
+    z-index: 1; /* Make sure the Earth image is above the canvas */
+}
+@media only screen and (max-width: 768px) {
+    .canvas-container {
+        display: none; /* Hide canvas on small screens */
+    }
+    .earth-container {
+        animation-play-state: paused; /* Pause Earth animation on small screens */
+    }
 }

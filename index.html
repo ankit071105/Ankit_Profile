@@ -13,8 +13,159 @@
 </head>
 
 <body>
+    <div class="canvas-container">
+        <canvas id="universe"></canvas>
+    </div>
+    <script>
+        const canvas = document.getElementById("universe");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const stars = [];
+        const numStars = 2500; 
+
+        const moon = {
+            x: canvas.width * 1.7,
+            y: canvas.height * 3.3,
+            radius: 50
+        };
+
+        const earth = {
+            x: canvas.width * 0.5,
+            y: canvas.height * 0.5,
+            radius: 70,
+            orbitRadius: 350,
+            angle: 0,
+            images: [],
+            currentImageIndex: 0,
+            rotationCount: 0,
+            maxRotationCount: 1
+        };
+
+        const imagePaths = [
+            'images/web.jpeg',
+            'images/com3.webp',
+            'images/com.jpeg',
+            'images/flutter.webp',
+            'images/com2.png',
+            'images/ios.webp',
+            'images/ml.webp',
+            'images/com1.png',
+            'images/cod.webp'
+        ];
+
+        for (let path of imagePaths) {
+            const img = new Image();
+            img.src = path;
+            earth.images.push(img);
+        }
+
+        function random(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        for (let i = 0; i < numStars; i++) {
+            stars.push({
+                x: random(0, canvas.width),
+                y: random(0, canvas.height),
+                radius: random(0.5, 2),
+                alpha: random(0.1, 1),
+                dx: random(-0.5, 0.5),
+                dy: random(-0.5, 0.5)
+            });
+        }
+
+        function drawMoon() {
+            ctx.beginPath();
+            ctx.arc(moon.x, moon.y, moon.radius, 0, Math.PI * 2, false);
+            ctx.fillStyle = '#ddd';
+            ctx.fill();
+        }
+
+        function drawEarth() {
+            const numImages = earth.images.length;
+            const angleIncrement = (Math.PI * 2) / numImages;
+
+            const angle = earth.angle;
+            const x = earth.x + earth.orbitRadius * Math.cos(angle);
+            const y = earth.y + earth.orbitRadius * Math.sin(angle);
+
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(angle);
+            ctx.beginPath();
+            ctx.arc(0, 0, earth.radius, 0, Math.PI * 2);
+            ctx.clip();
+            const img = earth.images[earth.currentImageIndex];
+            ctx.drawImage(img, -earth.radius, -earth.radius, earth.radius * 2, earth.radius * 2);
+            ctx.restore();
+
+            earth.angle += 0.01;
+
+            if (earth.angle >= Math.PI * 2) {
+                earth.angle = 0;
+                earth.rotationCount++;
+
+                if (earth.rotationCount >= earth.maxRotationCount) {
+                    earth.rotationCount = 0;
+                    earth.currentImageIndex = (earth.currentImageIndex + 1) % numImages;
+                }
+            }
+        }
+
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let star of stars) {
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2, false);
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+                ctx.fill();
+
+                star.x += star.dx;
+                star.y += star.dy;
+
+                if (star.x < 0 || star.x > canvas.width) star.dx *= -1;
+                if (star.y < 0 || star.y > canvas.height) star.dy *= -1;
+            }
+        }
+
+        function draw() {
+            drawStars();
+            drawMoon();
+            drawEarth();
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+     <script>
+        // JavaScript code for Earth animation
+        const earthss = document.getElementById('earth');
+
+        // Pause Earth animation on small screens
+        function pauseEarthAnimation() {
+            const screenWidth = window.innerWidth;
+            if (screenWidth <= 768) { // Adjust breakpoint as needed
+                earthss.style.animationPlayState = 'paused';
+            } else {
+                earthss.style.animationPlayState = 'running';
+            }
+        }
+
+        // Call pauseEarthAnimation initially and on window resize
+        pauseEarthAnimation();
+        window.addEventListener('resize', pauseEarthAnimation);
+    </script>
     <header class="header">
-        <a href="#" class="logo"><img src="images/100.png" alt="" style="width:100px; height: 80px; border-radius: 100%;"></a>
+        <a href="#" class="logo"><img src="images/100.png" alt="" style="width:130px; height: 100px; border-radius: 100%;"></a>
 
         <nav class="navbar">
             <a href="#home" class="active">Home</a>
@@ -47,38 +198,21 @@
                 <a href="https://www.linkedin.com/in/ankit-kumar-01a52827b/"><i class='bx bxl-linkedin'></i></a>
             </div>
 
-            <a href="images/ankitRESUME.pdf" class="btn">Download My Resume</a>
+            <a href="images/Resume.pdf" class="btn">Download My Resume</a>
+            
         </div>
-
-        <div class="profession-container">
-            <div class="profession-box">
-                <div class="profession" style="--i:0;">
-                    <i class='bx bx-code-alt'></i>
-                    <h3>Web Developer</h3>
-                </div>
-                <div class="profession" style="--i:1;">
-                    <i class='bx bx-mobile'></i>
-                    <h3>Mobile Developer</h3>
-                </div>
-                <div class="profession" style="--i:2;">
-                    <i class='bx bx-laptop'></i>
-                    <h3>Flutter Developer</h3>
-                </div>
-                <div class="profession" style="--i:3;">
-                    <i class='bx bx-camera'></i>
-                    <h3>Photography</h3>
-                </div>
-
-                <div class="circle"></div>
-            </div>
-
-            <div class="overlay"></div>
-        </div>
-
-        <div class="home-img">
-            <img src="images/12.png" alt="">
+        <div class="earth-container">
+            <img src="images/12489.png" alt="Earth" class="earth" id="earth">
         </div>
     </section>
+    <script>
+        const earths = document.getElementById('earth');
+
+earths.addEventListener('click', () => {
+    earth.style.animationPlayState = 'paused'; 
+});
+
+    </script>
     <section class="about" id="about">
         <div class="about-img">
             <img src="images/11.png" alt="">
@@ -133,7 +267,7 @@
         <h2 class="heading">Latest <span>Project</span></h2>
 
         <div class="portfolio-container">
-            <div class="portfolio-box">
+            <div class="portfolio-box"  style="height: 250px; width: 350px;">
                 <img src="images/1.png" alt="">
 
                 <div class="portfolio-layer">
@@ -142,7 +276,7 @@
                     <a href="https://ankit071105.github.io/Amazon-clone/"><i class='bx bx-link-external'></i></a>
                 </div>
             </div>
-            <div class="portfolio-box">
+            <div class="portfolio-box"  style="height: 250px; width: 350px;">
                 <img src="images/2.png" alt="">
 
                 <div class="portfolio-layer">
@@ -151,7 +285,7 @@
                     <a href="https://ankit071105.github.io/sawanmusic/"><i class='bx bx-link-external'></i></a>
                 </div>
             </div>
-            <div class="portfolio-box">
+            <div class="portfolio-box"  style="height: 250px; width: 350px;">
                 <img src="images/3.png" alt="">
 
                 <div class="portfolio-layer">
@@ -160,7 +294,7 @@
                     <a href=""><i class='bx bx-link-external'></i></a>
                 </div>
             </div>
-            <div class="portfolio-box">
+            <div class="portfolio-box"  style="height: 250px; width: 350px;">
                 <img src="images/4.png" alt="">
 
                 <div class="portfolio-layer">
@@ -169,7 +303,7 @@
                     <a href="https://ankit071105.github.io/login"><i class='bx bx-link-external'></i></a>
                 </div>
             </div>
-            <div class="portfolio-box">
+            <div class="portfolio-box"  style="height: 250px; width: 350px;">
                 <img src="images/5.png" alt="">
 
                 <div class="portfolio-layer">
@@ -178,16 +312,8 @@
                     <a href="https://ankit071105.github.io/zomato_clone/"><i class='bx bx-link-external'></i></a>
                 </div>
             </div>
-            <div class="portfolio-box">
-                <img src="images/6.png" alt="">
-
-                <div class="portfolio-layer">
-                    <h4>Web Project</h4>
-                    <p>A front-end Portfolio website which provide user to show their Project in different ways</p>
-                    <a href="https://ankit071105.github.io/Protifilo/"><i class='bx bx-link-external'></i></a>
-                </div>
-            </div>
-            <div class="portfolio-box">
+        
+            <div class="portfolio-box"  style="height: 250px; width: 350px;">
                 <img src="images/7.png" alt="">
 
                 <div class="portfolio-layer">
@@ -196,22 +322,54 @@
                     <a href="https://ankit071105.github.io/DurgaPujaSongs/"><i class='bx bx-link-external'></i></a>
                 </div>
             </div>
-            <div class="portfolio-box">
-                <img src="images/calc.png" alt="">
-
-                <div class="portfolio-layer">
-                    <h4>Web Project</h4>
-                    <p>A front-end Resume Website for presenting your Resume</p>
-                    <a href="https://ankit071105.github.io/Calculator/"><i class='bx bx-link-external'></i></a>
-                </div>
-            </div>
-            <div class="portfolio-box">
+          
+            <div class="portfolio-box"  style="height: 250px; width: 350px;">
                 <img src="images/9.png" alt="">
 
                 <div class="portfolio-layer">
                     <h4>Web Project</h4>
                     <p>A music website made for Chath Puja to make devotional atmosphere</p>
                     <a href="https://ankit071105.github.io/chath/"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box"  style="height: 250px; width: 350px;">
+                <img src="images/6.png" alt="">
+
+                <div class="portfolio-layer">
+                    <h4>Web Project</h4>
+                    <p>A front-end Portfolio website which provide user to show their Project in different ways</p>
+                    <a href="https://ankit071105.github.io/Protifilo/"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box" style="height: 250px; width: 350px;">
+                <img src="images/silentssa.jpeg" alt="" style="height: 250px;">
+
+                <div class="portfolio-layer" >
+                    <h4>Web Project</h4>
+                   <p>
+SilentSpeak is a groundbreaking project aimed at transforming communication for individuals facing speech impairments or disabilities that limit their ability to speak. 
+                   </p>
+                    <a href="https://silent-speaks.netlify.app/"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box" style="height: 250px; width: 350px;">
+                <img src="images/animations.png" alt="" style="height: 250px;">
+
+                <div class="portfolio-layer" >
+                    <h4>Web Project</h4>
+                   <p>
+                    Animation Site  For showing JS animation  .
+                   </p>
+                    <a href="https://motion-art-effect.netlify.app/"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box"  style="height: 250px; width: 350px;">
+                <img src="images/calc.png" alt="">
+
+                <div class="portfolio-layer">
+                    <h4>Web Project</h4>
+                    <p>A front-end Resume Website for presenting your Resume</p>
+                    <a href="https://ankit071105.github.io/Calculator/"><i class='bx bx-link-external'></i></a>
                 </div>
             </div>
         </div>
