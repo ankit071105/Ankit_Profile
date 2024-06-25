@@ -44,24 +44,7 @@
             maxRotationCount: 1
         };
 
-        const imagePaths = [
-            'images/web.jpeg',
-            'images/com3.webp',
-            'images/com.jpeg',
-            'images/flutter.webp',
-            'images/com2.png',
-            'images/ios.webp',
-            'images/ml.webp',
-            'images/com1.png',
-            'images/cod.webp'
-        ];
-
-        for (let path of imagePaths) {
-            const img = new Image();
-            img.src = path;
-            earth.images.push(img);
-        }
-
+     
         function random(min, max) {
             return Math.random() * (max - min) + min;
         }
@@ -146,24 +129,7 @@
             canvas.height = window.innerHeight;
         });
     </script>
-     <script>
-        // JavaScript code for Earth animation
-        const earthss = document.getElementById('earth');
-
-        // Pause Earth animation on small screens
-        function pauseEarthAnimation() {
-            const screenWidth = window.innerWidth;
-            if (screenWidth <= 768) { // Adjust breakpoint as needed
-                earthss.style.animationPlayState = 'paused';
-            } else {
-                earthss.style.animationPlayState = 'running';
-            }
-        }
-
-        // Call pauseEarthAnimation initially and on window resize
-        pauseEarthAnimation();
-        window.addEventListener('resize', pauseEarthAnimation);
-    </script>
+   
     <header class="header">
         <a href="#" class="logo"><img src="images/100.png" alt="" style="width:130px; height: 100px; border-radius: 100%;"></a>
 
@@ -202,17 +168,10 @@
             
         </div>
         <div class="earth-container">
-            <img src="images/12489.png" alt="Earth" class="earth" id="earth">
+            <img src="images/105.jpeg" alt="Earth" class="earth" id="earth" style="border-radius: 100%; width: 500px; height: 500px;">
         </div>
     </section>
-    <script>
-        const earths = document.getElementById('earth');
 
-earths.addEventListener('click', () => {
-    earth.style.animationPlayState = 'paused'; 
-});
-
-    </script>
     <section class="about" id="about">
         <div class="about-img">
             <img src="images/11.png" alt="">
@@ -294,6 +253,7 @@ earths.addEventListener('click', () => {
                     <a href=""><i class='bx bx-link-external'></i></a>
                 </div>
             </div>
+
             <div class="portfolio-box"  style="height: 250px; width: 350px;">
                 <img src="images/4.png" alt="">
 
@@ -333,6 +293,15 @@ earths.addEventListener('click', () => {
                 </div>
             </div>
             <div class="portfolio-box"  style="height: 250px; width: 350px;">
+                <img src="images/101.png" alt="">
+
+                <div class="portfolio-layer">
+                    <h4>Web Project</h4>
+                    <p>ITER WALLAH</p>
+                    <a href="https://iter-wallah.netlify.app/"><i class='bx bx-link-external'></i></a>
+                </div>
+                </div>
+            <div class="portfolio-box"  style="height: 250px; width: 350px;">
                 <img src="images/6.png" alt="">
 
                 <div class="portfolio-layer">
@@ -371,6 +340,17 @@ SilentSpeak is a groundbreaking project aimed at transforming communication for 
                     <p>A front-end Resume Website for presenting your Resume</p>
                     <a href="https://ankit071105.github.io/Calculator/"><i class='bx bx-link-external'></i></a>
                 </div>
+            </div>
+
+                <div class="portfolio-box"  style="height: 250px; width: 350px;">
+                    <img src="images//104.png" alt="">
+    
+                    <div class="portfolio-layer">
+                        <h4>Web Project</h4>
+                        <p>Fitness-Founder</p>
+                        <a href="https://ankit071105.github.io/Fitness-Founder/"><i class='bx bx-link-external'></i></a>
+                    </div>
+                
             </div>
         </div>
     </section>
