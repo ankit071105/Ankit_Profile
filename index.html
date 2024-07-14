@@ -10,141 +10,130 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/11.png" type="image/x-icon">
+<style>
+    body, html {
+    margin: 0;
+    padding: 0;
+ 
+    width: 100%;
+    height: 100%;
+ 
+}
+
+#animation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.shape {
+      position: absolute;
+    opacity: 0.4;
+    animation: moveUp 5s linear infinite;
+}
+
+@keyframes moveUp {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(calc(100vw * (random - 0.5)));
+        opacity: 0;
+    }
+}
+
+    .circle {
+    border-radius: 50%;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-bottom: 60px solid;
+    background-color: transparent;
+}
+
+.dot {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: moveUp 5s linear infinite;
+}
+
+
+.polygon {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+</style>
+
 </head>
 
 <body>
-    <div class="canvas-container">
-        <canvas id="universe"></canvas>
-    </div>
+    <div id="animation-container"></div>
     <script>
-        const canvas = document.getElementById("universe");
-        const ctx = canvas.getContext("2d");
+        const shapes = ['circle', 'triangle', 'polygon'];
+const colors = ['#696969','#d5f7f1'];
+const container = document.getElementById('animation-container');
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+function createShape() {
+    const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const size = Math.random() * 40 + 20;
 
-        const stars = [];
-        const numStars = 2500; 
+    const shape = document.createElement('div');
+    shape.classList.add('shape', shapeType);
+    shape.style.backgroundColor = color;
+    shape.style.width = shapeType === 'circle' ? `${size * 1}px` : `${size}px`;
+    shape.style.height = `${size}px`;
+    shape.style.left = `${Math.random() * 100}vw`;
 
-        const moon = {
-            x: canvas.width * 1.7,
-            y: canvas.height * 3.3,
-            radius: 50
-        };
+    container.appendChild(shape);
 
-        const earth = {
-            x: canvas.width * 0.5,
-            y: canvas.height * 0.5,
-            radius: 50,
-            orbitRadius: 350,
-            angle: 60,
-            images: [],
-            currentImageIndex: 0,
-            rotationCount: 0,
-            maxRotationCount: 1
-        };
-        const imagePaths = [
-            'images/web.jpeg',
-            'images/com3.webp',
-            'images/com.jpeg',
-            'images/flutter.webp',
-            'images/com2.png',
-            'images/ios.webp',
-            'images/ml.webp',
-            'images/com1.png',
-            'images/cod.webp'
-        ];
+    setTimeout(() => {
+        shape.remove();
+    }, 5000);
+}
 
-        for (let path of imagePaths) {
-            const img = new Image();
-            img.src = path;
-            earth.images.push(img);
-        }
-     
-        function random(min, max) {
-            return Math.random() * (max - min) + min;
-        }
+function animateShapes() {
+    createShape();
+    setTimeout(animateShapes, 500);
+}
 
-        for (let i = 0; i < numStars; i++) {
-            stars.push({
-                x: random(0, canvas.width),
-                y: random(0, canvas.height),
-                radius: random(0.6, 2),
-                alpha: random(0.1, 1),
-                dx: random(-0.5, 0.5),
-                dy: random(-0.5, 0.5)
-            });
-        }
+animateShapes();
 
-        function drawMoon() {
-            ctx.beginPath();
-            ctx.arc(moon.x, moon.y, moon.radius, 0, Math.PI * 2, false);
-            ctx.fillStyle = '#ddd';
-            ctx.fill();
-        }
+const containers = document.getElementById('animation-container');
 
-        function drawEarth() {
-            const numImages = earth.images.length;
-            const angleIncrement = (Math.PI * 2) / numImages;
+function createDot() {
+    const size = Math.random() * 10 + 5; // Dot size between 5px and 15px
+    const color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
 
-            const angle = earth.angle;
-            const x = earth.x + earth.orbitRadius * Math.cos(angle);
-            const y = earth.y + earth.orbitRadius * Math.sin(angle);
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    dot.style.backgroundColor = color;
+    dot.style.width = `${size}px`;
+    dot.style.height = `${size}px`;
+    dot.style.left = `${Math.random() * 100}vw`;
 
-            ctx.save();
-            ctx.translate(x, y);
-            ctx.rotate(angle);
-            ctx.beginPath();
-            ctx.arc(0, 0, earth.radius, 0, Math.PI * 2);
-            ctx.clip();
-            const img = earth.images[earth.currentImageIndex];
-            ctx.drawImage(img, -earth.radius, -earth.radius, earth.radius * 2, earth.radius * 2);
-            ctx.restore();
+    containers.appendChild(dot);
 
-            earth.angle += 0.01;
+    setTimeout(() => {
+        dot.remove();
+    }, 5000);
+}
 
-            if (earth.angle >= Math.PI * 2) {
-                earth.angle = 0;
-                earth.rotationCount++;
+function animateDots() {
+    createDot();
+    setTimeout(animateDots, 30); 
+}
 
-                if (earth.rotationCount >= earth.maxRotationCount) {
-                    earth.rotationCount = 0;
-                    earth.currentImageIndex = (earth.currentImageIndex + 1) % numImages;
-                }
-            }
-        }
+animateDots();
 
-        function drawStars() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            for (let star of stars) {
-                ctx.beginPath();
-                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2, false);
-                ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
-                ctx.fill();
-
-                star.x += star.dx;
-                star.y += star.dy;
-
-                if (star.x < 0 || star.x > canvas.width) star.dx *= -1;
-                if (star.y < 0 || star.y > canvas.height) star.dy *= -1;
-            }
-        }
-
-        function draw() {
-            drawStars();
-            drawMoon();
-            drawEarth();
-            requestAnimationFrame(draw);
-        }
-
-        draw();
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
     </script>
+   
    
     <header class="header">
         <a href="#" class="logo"><img src="images/100.png" alt="" style="width:130px; height: 100px; border-radius: 100%;"></a>
@@ -165,8 +154,9 @@
     </header>
     <section class="home" id="home">
         <div class="home-content">
-            <h3>Hello, I am</h3>
-            <h1>Ankit Kumar</h1>
+            <h3>Hello, I am </h3>
+         
+            <h1 style="text-align: center; background-image: url('https://ideogram.ai/assets/progressive-image/balanced/response/8fuHhxdSSCmIKJm_9j0iJw'); background-size: contain; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 6rem;">Ankit Kumar</h1>
             <p>
                 I'm a web developer who loves to create beautiful and functional websites
                 for people who want to make a difference in the world.
@@ -184,13 +174,13 @@
             
         </div>
         <div class="earth-container">
-            <img src="images/12489.png" alt="Earth" class="earth" id="earth" >
+            <img src="images/11.png" alt="Earth" class="earth" id="earth" >
         </div>
     </section>
 
     <section class="about" id="about">
         <div class="about-img">
-            <img src="images/11.png" alt="">
+            <img src="images/900.jpeg" alt="">
         </div>
 
         <div class="about-content">
@@ -243,19 +233,61 @@
 
         <div class="portfolio-container">
             <div class="portfolio-box"  style="height: 250px; width: 350px;">
-                <img src="images/1.png" alt="">
+                <img src="images/101.png" alt="">
 
                 <div class="portfolio-layer">
-                    <h4>Web Project</h4>
+                    <h4>ITER WALLAH</h4>
+                    <p>A website for the Notes and video lectures</p>
+                    <a href="https://iter-wallah.netlify.app/"><i class='bx bx-link-external'></i></a>
+                </div>
+                </div>
+            <div class="portfolio-box" style="height: 250px; width: 350px;">
+                <img src="images/silentssa.jpeg" alt="" style="height: 250px;">
+
+                <div class="portfolio-layer" >
+                    <h4>SilentSpeak </h4>
+                   <p>
+It is a groundbreaking project aimed at transforming communication for individuals facing speech impairments or disabilities that limit their ability to speak. 
+                   </p>
+                    <a href="https://silent-speaks.netlify.app/"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box"  style="height: 250px; width: 350px;">
+                <img src="images/0912.png" alt="">
+
+                <div class="portfolio-layer">
+                    <h4>Fun zone</h4>
+                    <p>A website Full of Games</p>
+                    <a href="https://fun-zone-two.vercel.app/"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box"  style="height: 250px; width: 350px;">
+                <img src="images/calc.png" alt="">
+
+                <div class="portfolio-layer">
+                    <h4>Calculator</h4>
+                    <p>A Website with solve mathematical calculations</p>
+                    <a href="https://ankit071105.github.io/Calculator/"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+          
+            <div class="portfolio-box"  style="height: 250px; width: 350px;">
+                <img src="images/1.png" alt="">
+
+
+                
+                <div class="portfolio-layer">
+                    <h4>Amazon Clone</h4>
                     <p>A amazon front-end  Clone Website</p>
                     <a href="https://ankit071105.github.io/Amazon-clone/"><i class='bx bx-link-external'></i></a>
                 </div>
+
             </div>
             <div class="portfolio-box"  style="height: 250px; width: 350px;">
                 <img src="images/2.png" alt="">
 
                 <div class="portfolio-layer">
-                    <h4>Web Project</h4>
+                    <h4>Sawan Music</h4>
                     <p>A Sawan Music clone Project which plays song</p>
                     <a href="https://ankit071105.github.io/sawanmusic/"><i class='bx bx-link-external'></i></a>
                 </div>
@@ -264,17 +296,17 @@
                 <img src="images/3.png" alt="">
 
                 <div class="portfolio-layer">
-                    <h4>Web Project</h4>
+                    <h4>USR Complex </h4>
                     <p>A Complex Booking website which provide user to book their shops</p>
                     <a href=""><i class='bx bx-link-external'></i></a>
                 </div>
             </div>
-
+         
             <div class="portfolio-box"  style="height: 250px; width: 350px;">
                 <img src="images/4.png" alt="">
 
                 <div class="portfolio-layer">
-                    <h4>Web Project</h4>
+                    <h4>sign-In & Sign-Up</h4>
                     <p>A sign-In & Sign-Up page for the user to enter any website with dark mode Facility</p>
                     <a href="https://ankit071105.github.io/login"><i class='bx bx-link-external'></i></a>
                 </div>
@@ -283,7 +315,7 @@
                 <img src="images/5.png" alt="">
 
                 <div class="portfolio-layer">
-                    <h4>Web Project</h4>
+                    <h4>zomato-clone </h4>
                     <p>A zomato-clone Food delivery website which provide user to order the food online.</p>
                     <a href="https://ankit071105.github.io/zomato_clone/"><i class='bx bx-link-external'></i></a>
                 </div>
@@ -293,55 +325,29 @@
                 <img src="images/7.png" alt="">
 
                 <div class="portfolio-layer">
-                    <h4>Web Project</h4>
+                    <h4>Durga Puja Music</h4>
                     <p>A music website made for Durga Puja to make devotional atmosphere</p>
                     <a href="https://ankit071105.github.io/DurgaPujaSongs/"><i class='bx bx-link-external'></i></a>
                 </div>
             </div>
           
-            <div class="portfolio-box"  style="height: 250px; width: 350px;">
-                <img src="images/9.png" alt="">
-
-                <div class="portfolio-layer">
-                    <h4>Web Project</h4>
-                    <p>A music website made for Chath Puja to make devotional atmosphere</p>
-                    <a href="https://ankit071105.github.io/chath/"><i class='bx bx-link-external'></i></a>
-                </div>
-            </div>
-            <div class="portfolio-box"  style="height: 250px; width: 350px;">
-                <img src="images/101.png" alt="">
-
-                <div class="portfolio-layer">
-                    <h4>Web Project</h4>
-                    <p>ITER WALLAH</p>
-                    <a href="https://iter-wallah.netlify.app/"><i class='bx bx-link-external'></i></a>
-                </div>
-                </div>
+           
+        
             <div class="portfolio-box"  style="height: 250px; width: 350px;">
                 <img src="images/6.png" alt="">
 
                 <div class="portfolio-layer">
-                    <h4>Web Project</h4>
+                    <h4>Portfoliot</h4>
                     <p>A front-end Portfolio website which provide user to show their Project in different ways</p>
                     <a href="https://ankit071105.github.io/Protifilo/"><i class='bx bx-link-external'></i></a>
                 </div>
             </div>
-            <div class="portfolio-box" style="height: 250px; width: 350px;">
-                <img src="images/silentssa.jpeg" alt="" style="height: 250px;">
-
-                <div class="portfolio-layer" >
-                    <h4>Web Project</h4>
-                   <p>
-SilentSpeak is a groundbreaking project aimed at transforming communication for individuals facing speech impairments or disabilities that limit their ability to speak. 
-                   </p>
-                    <a href="https://silent-speaks.netlify.app/"><i class='bx bx-link-external'></i></a>
-                </div>
-            </div>
+        
             <div class="portfolio-box" style="height: 250px; width: 350px;">
                 <img src="images/animations.png" alt="" style="height: 250px;">
 
                 <div class="portfolio-layer" >
-                    <h4>Web Project</h4>
+                    <h4> Animation Project</h4>
                    <p>
                     Animation Site  For showing JS animation  .
                    </p>
@@ -349,21 +355,22 @@ SilentSpeak is a groundbreaking project aimed at transforming communication for 
                 </div>
             </div>
             <div class="portfolio-box"  style="height: 250px; width: 350px;">
-                <img src="images/calc.png" alt="">
+                <img src="images/9.png" alt="">
 
                 <div class="portfolio-layer">
-                    <h4>Web Project</h4>
-                    <p>A front-end Resume Website for presenting your Resume</p>
-                    <a href="https://ankit071105.github.io/Calculator/"><i class='bx bx-link-external'></i></a>
+                    <h4>Chath Puja music </h4>
+                    <p>A music website made for Chath Puja to make devotional atmosphere</p>
+                    <a href="https://ankit071105.github.io/chath/"><i class='bx bx-link-external'></i></a>
                 </div>
             </div>
+        
 
                 <div class="portfolio-box"  style="height: 250px; width: 350px;">
                     <img src="images//104.png" alt="">
     
                     <div class="portfolio-layer">
-                        <h4>Web Project</h4>
-                        <p>Fitness-Founder</p>
+                        <h4>Fitness-Founder</h4>
+                        <p>A Social Media Platform which promotes Body Builders</p>
                         <a href="https://ankit071105.github.io/Fitness-Founder/"><i class='bx bx-link-external'></i></a>
                     </div>
                 
@@ -476,7 +483,7 @@ SilentSpeak is a groundbreaking project aimed at transforming communication for 
 </div>
 <br>
 <br>
-    <footer class="footer" id="contact">
+    <footer class="footer" id="contact" style="background: rgb(3, 20, 50);">
         <div class="footer-text">
             <p>Copyright &copy; 2024 | All Rights Reserved  </p>
             <p>

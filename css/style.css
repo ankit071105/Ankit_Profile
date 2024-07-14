@@ -12,11 +12,12 @@
 }
 
 :root {
-    --bg-color: #0e021b;
-    --text-color: #82f4f0;
-    --main-color: #7e097b;
-    --white-color: #7cd1f9;
-    --shadow-color: rgba(247, 245, 251, 0.975);
+    --bg-color: #0e0326;
+    --text-color: #d5f3f1;
+    --main-color: #7f8c1c;
+    --white-color: #abf4da;
+    --shadow-color: rgba(19, 5, 46, 0.975);
+     
 }
 
 *::selection {
@@ -25,8 +26,10 @@
 }
 
 .dark-mode {
-    --bg-color: #0b061f;
+    --bg-color: #000000;
     --text-color: #fdfdfd;
+    --white-color: #88e4db;
+    --main-color: #a378d9;
     --shadow-color: rgba(0, 0, 0, .7);
 }
 
@@ -131,10 +134,13 @@ section {
     max-width: 44rem;
 }
 
-.home-content h3 {
-    font-size: 3.2rem;
-    font-weight: 700;
-    line-height: .3;
+.home-content  h3 {
+    background-image: url('https://ideogram.ai/assets/progressive-image/balanced/response/9f6pRqnAQLu2kdOqf_Z8wA') ; 
+  -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+     font-size: 7rem;
+     font-weight: bolder;
+     
 }
 
 .home-content h1 {
@@ -930,12 +936,12 @@ canvas {
 
 @media (max-width: 768px) {
     .earth-container {
-        display: none; /* Hide Earth container on smaller screens */
+        display: none; 
     }
 }
 
 .earth:hover {
-    animation: rotation 10s infinite linear; /* Rotation animation on hover */
+    animation: rotation 5s infinite linear; 
 }
 
 @keyframes rotation {
@@ -952,7 +958,7 @@ canvas {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Place the canvas behind other content */
+    z-index: -1;
 }
 #universe {
     width: 100%;
@@ -960,7 +966,7 @@ canvas {
 }
 .home {
     position: relative;
-    z-index: 1; /* Ensure the content is above the canvas */
+    z-index: 1;
 }
 .earth-container {
     position: absolute;
@@ -969,14 +975,30 @@ canvas {
     transform: translate(-50%, -50%);
 }
 #earth {
-    position: relative; /* Ensure it's relative to its container */
-    z-index: 1; /* Make sure the Earth image is above the canvas */
+    position: relative; 
+    z-index: 1; 
 }
 @media only screen and (max-width: 768px) {
     .canvas-container {
-        display: none; /* Hide canvas on small screens */
+        display: none; 
     }
     .earth-container {
-        animation-play-state: paused; /* Pause Earth animation on small screens */
+        animation-play-state: paused; 
     }
+}
+h2{
+    text-align: center; 
+    background-image: url('https://ideogram.ai/assets/progressive-image/balanced/response/QX_ULN1yRi6Y38LgVobpPw'); 
+    background-size: contain; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 8rem !important;
+}
+h3{
+    text-align: center; 
+    background-image: url('https://ideogram.ai/assets/progressive-image/balanced/response/t6K7jox2RmWtOgVt8uFyuA'); 
+    background-size: contain; -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+}
+p{
+    text-align: center; 
+    background-image: url('https://ideogram.ai/assets/progressive-image/balanced/response/vovBVzVDST-lOibt2v-D6g'); 
+   -webkit-background-clip: text; 
+   -webkit-text-fill-color: transparent; 
 }
