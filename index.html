@@ -75,42 +75,13 @@
 <body>
     <div id="animation-container"></div>
     <script>
-        const shapes = ['circle', 'triangle', 'polygon'];
-const colors = ['#696969','#d5f7f1'];
-const container = document.getElementById('animation-container');
-
-function createShape() {
-    const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const size = Math.random() * 40 + 20;
-
-    const shape = document.createElement('div');
-    shape.classList.add('shape', shapeType);
-    shape.style.backgroundColor = color;
-    shape.style.width = shapeType === 'circle' ? `${size * 1}px` : `${size}px`;
-    shape.style.height = `${size}px`;
-    shape.style.left = `${Math.random() * 100}vw`;
-
-    container.appendChild(shape);
-
-    setTimeout(() => {
-        shape.remove();
-    }, 5000);
-}
-
-function animateShapes() {
-    createShape();
-    setTimeout(animateShapes, 500);
-}
-
-animateShapes();
+     
 
 const containers = document.getElementById('animation-container');
 
 function createDot() {
-    const size = Math.random() * 10 + 5; // Dot size between 5px and 15px
+    const size = Math.random() * 10 + 5; 
     const color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
-
     const dot = document.createElement('div');
     dot.classList.add('dot');
     dot.style.backgroundColor = color;
@@ -133,8 +104,6 @@ function animateDots() {
 animateDots();
 
     </script>
-   
-   
     <header class="header">
         <a href="#" class="logo"><img src="images/100.png" alt="" style="width:130px; height: 100px; border-radius: 100%;"></a>
 
