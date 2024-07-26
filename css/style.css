@@ -851,7 +851,20 @@ span {
     html {
         font-size: 50%;
     }
+#home1{
+    padding: 50%;
 
+  
+}
+#home1 span{
+    font-size: 18px;
+}
+#home1h2{
+    font-size: 20px;
+}
+#home1 bar{
+    padding: 20px;
+}
     #darkMode-icon {
         right: 6rem;
     }
