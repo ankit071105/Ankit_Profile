@@ -12,10 +12,10 @@
 }
 
 :root {
-    --bg-color: #080215;
-    --text-color: #d5f3f1;
-    --main-color: #7f8c1c;
-    --white-color: #abf4da;
+    --bg-color: linear-gradient(to  left, #030315 0%, #010b3c 76%);
+    --text-color: #c9eaff;
+    --main-color: #ac5af4;
+    --white-color: #e7d1ff;
     --shadow-color: rgba(19, 5, 46, 0.975);
      
 }
@@ -26,7 +26,7 @@
 }
 
 .dark-mode {
-    --bg-color: #000000;
+    --bg-color: linear-gradient(to right, #030315 30%, #0d0015 76%);
     --text-color: #fdfdfd;
     --white-color: #88e4db;
     --main-color: #a378d9;
@@ -508,10 +508,10 @@ span {
 }
 
 .testimonial-slide img {
-    width: 14rem;
-    height: 14rem;
+    width: 16rem;
+    height: 300px;
     object-fit: cover;
-    border-radius: 100%;
+
     border: 3px solid var(--bg-color);
     outline: 4px solid var(--main-color);
 }
@@ -1004,11 +1004,7 @@ h2{
     background-image: url('https://ideogram.ai/assets/progressive-image/balanced/response/QX_ULN1yRi6Y38LgVobpPw'); 
     background-size: contain; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 8rem !important;
 }
-h3{
-    text-align: center; 
-    background-image: url('https://ideogram.ai/assets/progressive-image/balanced/response/t6K7jox2RmWtOgVt8uFyuA'); 
-    background-size: contain; -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
-}
+
 p{
     text-align: center; 
     background-image: url('https://ideogram.ai/assets/progressive-image/balanced/response/vovBVzVDST-lOibt2v-D6g'); 

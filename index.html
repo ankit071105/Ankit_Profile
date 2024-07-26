@@ -69,7 +69,7 @@
 }
 
 #home1{
-    background: #010109;
+    background-color: var(--bg-color);
     color: white;
     display: flex;
     flex-direction: column;
@@ -104,7 +104,7 @@
     font-size: 28px;
 }
 .bar1{
-    background: #e61c3a;
+    background: #f7fbfb;
     display: block;
     height: 20px;
     border: 1px solid rgba(0, 0, 0, 0.3);
@@ -203,7 +203,9 @@ animateDots();
     </header>
     <section class="home" id="home">
         <div class="home-content">
-            <h3>Hello, I am </h3>
+            <h3 style=" 
+            background-image: url('images/aiback.jpg'); 
+            background-size: contain; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 8rem !important;">Hello, I am </h3>
          
             <h1 style="text-align: center; background-image: url('https://ideogram.ai/assets/progressive-image/balanced/response/8fuHhxdSSCmIKJm_9j0iJw'); background-size: contain; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 6rem;">Ankit Kumar</h1>
             <p>
@@ -251,9 +253,10 @@ My journey as a budding developer reflects my commitment to continuous learning 
 
 
 </p>
-            <a href="#" class="btn">Read More</a>
+        
         </div>
     </section>
+    <br><br><br>
     <section id="home1">
         <h2 class="title">
             My <span>Skills</span>
@@ -439,7 +442,7 @@ My journey as a budding developer reflects my commitment to continuous learning 
                 <br><br>
                 In terms of databases, I am skilled in working with both SQL and NoSQL databases. I have hands-on experience with MongoDB, a flexible and scalable NoSQL database that is ideal for handling unstructured data and real-time applications. Additionally, I am proficient in SQL databases, which are essential for structured data storage, querying, and transaction management.
                 <br><br>
-                My comprehensive skill set in front-end and back-end development ensures that I can tackle complex web projects with a holistic approach, from crafting intuitive user interfaces to developing efficient and scalable server-side solutions. My commitment to leveraging cutting-edge technologies and best practices allows me to deliver high-quality web applications that meet and exceed user expectations.</p>
+                My comprehensive skill set in front-end and back-end development ensures that I can tackle complex web projects with a holistic approach, from crafting intuitive user interfaces to developing efficient and scalable server-side solutions. My commitment to leveraging cutting-edge technologies and best practices allows me to deliver high-quality web applications that meet and exceed user expectations. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus culpa accusantium, molestiae laborum facilis in assumenda! Sequi, dolores? Tenetur, soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio sed atque excepturi ut nesciunt quis harum iure sit perferendis, impedit tempore cumque evea.</p>
                 <a href="https://en.wikipedia.org/wiki/Web_development#:~:text=Web%20development%20is%20the%20work,businesses%2C%20and%20social%20network%20services." class="btn">Read More</a>
             </div>
          
@@ -631,7 +634,7 @@ It is a groundbreaking project aimed at transforming communication for individua
                         </button>
                     </div>
                     <div class="testimonial-slide swiper-slide">
-                        <img src="images/silent.jpeg" alt="">
+                        <img src="images/silent.png" alt="">
                         <h3>Silent Speak (Flutter)</h3>
                         <p>I've developed an app called <B>Silent-Speak</B> that translates all 28 languages into Morse code. To make learning more engaging, I've included educational games for kids. These games feature learning Morse code for numbers through Tic-Tac-Toe, playing Rock-Paper-Scissors, and flipping cards to learn the alphabet in Morse code.</p>
                            <br><br>
@@ -639,7 +642,28 @@ It is a groundbreaking project aimed at transforming communication for individua
                     <a href="https://github.com/ankit071105/Beardo?tab=readme-ov-file"> Source code</a>
                         </button>
                     </div>
-                 
+                    <div class="testimonial-slide swiper-slide">
+                        <img src="images/menu.png" alt="">
+                        <h3 style="text-align: center;">Menufy: Your Ultimate Online Food Ordering and Delivery App</h3>
+                     <p>
+                        Discover the easiest way to satisfy your cravings with Menufy, the premier Android app for seamless online food ordering and delivery. Menufy connects you with a wide variety of local restaurants and food joints, offering a diverse range of cuisines right at your fingertips. Whether you’re in the mood for a quick snack, a hearty meal, or a gourmet dinner, Menufy has got you covered.
+<br><br>
+                        Key Features:
+                        <br><br>             
+                        Extensive Restaurant Listings: Browse through a comprehensive list of local eateries, complete with detailed menus and customer reviews.
+                        Personalized Recommendations: Receive tailored food suggestions based on your preferences and past orders.
+
+                        Customer Support: Access 24/7 customer support for any queries or assistance.
+                        Experience the joy of delicious food delivered straight to your door with Menufy. Download now and embark on a culinary adventure from the comfort of your home!
+                        
+                        
+                     </p>
+                            <br>
+                            <br>
+                            <button>
+                        <a href="https://github.com/ankit071105/Menufys"> Source code</a>
+                            </button>
+                    </div>
                     <div class="testimonial-slide swiper-slide">
                         <img src="images/22.png" alt="">
                         <h3>Fructus (ios)</h3>
@@ -670,7 +694,6 @@ It is a groundbreaking project aimed at transforming communication for individua
                             </button>
                     </div>
 
-                  
                     <div class="testimonial-slide swiper-slide">
                         <img src="images/vimal.png" alt="">
                         <h3>Vimal Store  (Flutter)</h3>
@@ -681,18 +704,7 @@ It is a groundbreaking project aimed at transforming communication for individua
                         <a href="https://github.com/ankit071105/VIMAL"> Source code</a>
                             </button>
                     </div>
-                    <div class="testimonial-slide swiper-slide">
-                        <img src="images/emi.jpeg" alt="">
-                        <h3>EasyEMI Master (Flutter)</h3>
-                     <p>
-                        The Flutter project is an intuitive loan <B>EasyEMI Master</B> application designed to facilitate financial planning for users. With this app, individuals can effortlessly determine their equated monthly installments (EMI) for various types of loans. Users simply input key parameters such as the loan amount, interest rate, and loan tenure. The application then swiftly computes the monthly EMI, providing users with valuable insights into their repayment obligations. This tool empowers users to make informed financial decisions by offering clarity on the potential financial commitments associated with borrowing, thus promoting responsible financial management
-                     </p>
-                            <br>
-                            <br>
-                            <button>
-                        <a href="#"> Source code</a>
-                            </button>
-                    </div>
+                
 
                 </div>
 
