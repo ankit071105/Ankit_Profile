@@ -13,9 +13,9 @@
 
 :root {
     --bg-color: linear-gradient(to  left, #030315 0%, #010b3c 76%);
-    --text-color: #c9eaff;
-    --main-color: #ac5af4;
-    --white-color: #e7d1ff;
+    --text-color: #3de4d6;
+    --main-color: #6918af;
+    --white-color: #fffce9;
     --shadow-color: rgba(19, 5, 46, 0.975);
      
 }
@@ -28,7 +28,7 @@
 .dark-mode {
     --bg-color: linear-gradient(to right, #030315 30%, #0d0015 76%);
     --text-color: #fdfdfd;
-    --white-color: #88e4db;
+    --white-color: #d9fffb;
     --main-color: #a378d9;
     --shadow-color: rgba(0, 0, 0, .7);
 }
@@ -1005,9 +1005,4 @@ h2{
     background-size: contain; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 8rem !important;
 }
 
-p{
-    text-align: center; 
-    background-image: url('https://ideogram.ai/assets/progressive-image/balanced/response/vovBVzVDST-lOibt2v-D6g'); 
-   -webkit-background-clip: text; 
-   -webkit-text-fill-color: transparent; 
-}
+
